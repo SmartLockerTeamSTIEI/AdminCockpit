@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery-latest.js"></script>
+  	  <script>
+	/*jQuery Code: Ajax Request on click on Combo should cause http Ajax Request to Server */
+	jQuery(document).ready(function(){		
+		type="text/javascript">
+            $(function(){				
+                $('#select_link').click(function(e){
+                    e.preventDefault();
+                    console.log('select_link clicked');
+                    
+                     /*$.ajax({
+                        dataType: 'jsonp',
+                        data: "data=yeah",						
+                        jsonp: 'callback',
+                        url: 'http://localhost:3000/endpoint?callback=?',						
+                        success: function(data) {
+                            console.log('success');
+                            console.log(JSON.stringify(data));
+                        }
+                    });*/
+					var data = {};
+					data.title = "title";
+					data.message = "message";
+					
+					$.ajax({
+						type: 'POST',
+						data: JSON.stringify(data),
+				        contentType: 'application/json',
+                        url: 'http://localhost:8080/combo',
+                        success: function(data) {
+                            console.log('success');
+                            console.log(JSON.stringify(data));
+                        }
+                    });
+					/*$.ajax('http://localhost:3000/endpoint', {
+					        type: 'POST',
+					        data: JSON.stringify(data),
+					        contentType: 'application/json',
+					        success: function() { console.log('success');},
+					        error  : function() { console.log('error');}
+					});*/
+                });				
+            });
+	});
+	</script>  
+	
+
+	<script>
+	
+	/*using javascript (http://jsfiddle.net/8svjf80g/1/) to load JSON data into Bootstrap table */
+	
+	 var $table = $('#table');
+		var mydata = 
+	[
+	    {
+        "combo": 0,
+        "name": "test0",
+        "price": "$0"
+    },
+	
+	
+	];
+	
+	
+	$(function () {
+		$('#table').bootstrapTable({
+			data: mydata
+		});
+	});
+	
+	</script>  
+	
+	
+  <link rel="stylesheet" href="/main.css">
+  <title>Database Admin</title>
+  
+  <title>Database Admin</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.1/bootstrap-table.min.css"> 
+  
+  <style>
+  
+  
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
+    .row.content {height: 1500px}
+    
+    /* Set gray background color and 100% height */
+    .sidenav {
+      background-color: #f1f1f1;
+      height: 100%;
+    }
+    
+    /* Set black background color, white text and some padding */
+    footer {
+      background-color: #555;
+      color: white;
+      padding: 15px;
+    }
+    
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height: auto;} 
+    }
+  </style>
+</head>
+   
+<body>
+
+<div class="container-fluid">
+  <div class="row content">
+    <div class="col-sm-3 sidenav">
+      <h4>Database Admin</h4>
+      <ul class="nav nav-pills nav-stacked">
+     	<li><a href="Info.html">Info</a></li>
+		
+		<li class="active"><a href="Combo.html" onclick="sndReq('curl -X GET "http://localhost:8080/combo');"> Combo</a></li>
+		
+		function loadJSON(file,callback) {   
+	  var xobj = new XMLHttpRequest();
+	  xobj.overrideMimeType('application/json');
+	  xobj.open('GET', file, true); 
+	  xobj.onreadystatechange = function () {
+    if (xobj.readyState == 4 && xobj.status == '200') {
+    // Required use of an anonymous callback as .open will NOT return a value but simply returns undefined in asynchronous mode
+      callback(xobj.responseText);
+     }
+  };
+  xobj.send(null);  
+}
+					
+		<li><a href="Food.html">Food</a></li>
+		<li><a href="Ingredient.html">Ingredient</a><li>
+		<li><a href="Time Schedule.html">Time Schedule</a></li>
+		<li><a href="Locker.html">Locker</a></li>
+		<li><a href="Orders.html">Orders</a></li>
+		<li><a href="Roles.html">Roles</a></li>		
+      </ul><br>
+	  	  
+	  
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="Search..">
+        <span class="input-group-btn">
+          <button class="btn btn-default" type="button">
+            <span class="glyphicon glyphicon-search"></span>
+          </button>
+        </span>
+      </div>
+    </div>
+		  		<br>
+		<br>	
+	
+    <div class="container">
+        <table id="table" data-height="460">
+        <thead>
+            <tr>
+                <th data-field="combo">Combo Name</th>
+                <th data-field="name">Combo Availablity</th>
+                <th data-field="price">Combo Price</th>
+            </tr>
+        </thead>
+    </table>
+    </div>
+	
+	
+    <div class="col-sm-9">
+		<br>	
+	<button type="button" class="btn btn-success">Add new Combo</button>
+	<br>	
+	<hr>	  
+      <h2>Combo 1</h2>
+      <h5><span class="glyphicon glyphicon-time"></span> Last change by RM, November 11, 2017.</h5>
+      <h5><span class="label label-danger">Not avaiable</span> </h5>
+	  <button type="button" class="btn btn-success">Set available</button>
+	  <button type="button" class="btn btn-success">Show Food</button>
+	  <br>
+	  <br>
+	   <button type="button" class="btn btn-danger btn-lg btn3d"><span class="glyphicon glyphicon-remove"></span> Delete Combo</button>
+	   <button type="button" class="btn btn-danger btn-lg btn3d"><span class="glyphicon glyphicon-remove"></span> Change Name</button>
+	   <button type="button" class="btn btn-danger btn-lg btn3d"><span class="glyphicon glyphicon-remove"></span> Change Description</button>
+	   <button type="button" class="btn btn-danger btn-lg btn3d"><span class="glyphicon glyphicon-remove"></span> Change Price</button>
+	   <button type="button" class="btn btn-danger btn-lg btn3d"><span class="glyphicon glyphicon-remove"></span> Change Picture</button>
+	   <button type="button" class="btn btn-danger btn-lg btn3d"><span class="glyphicon glyphicon-remove"></span> Change Food</button>
+	  <br>	
+	  <br>	
+	  <img src="combo 1.jpg" width="104" height="90" alt="Combo1" class="pull-left">
+      <br>
+	  <br>
+	  <br>
+	  <br>
+	  <br>
+      <hr>
+      <h2>Combo 2</h2>
+      <h5><span class="glyphicon glyphicon-time"></span> Last change by RM, November 11, 2017.</h5>
+      <h5><span class="label label-success">Available</span></h5><br>
+	  <button type="button" class="btn btn-success">Set available</button>
+	  <button type="button" class="btn btn-success">Show Food</button>
+	  <br>
+	  <br>
+	   <button type="button" class="btn btn-danger btn-lg btn3d"><span class="glyphicon glyphicon-remove"></span> Delete Combo</button>
+	   <button type="button" class="btn btn-danger btn-lg btn3d"><span class="glyphicon glyphicon-remove"></span> Change Name</button>
+		<button type="button" class="btn btn-danger btn-lg btn3d"><span class="glyphicon glyphicon-remove"></span> Change Description</button>
+	   <button type="button" class="btn btn-danger btn-lg btn3d"><span class="glyphicon glyphicon-remove"></span> Change Price</button>
+	   <button type="button" class="btn btn-danger btn-lg btn3d"><span class="glyphicon glyphicon-remove"></span> Change Picture</button>
+	   <button type="button" class="btn btn-danger btn-lg btn3d"><span class="glyphicon glyphicon-remove"></span> Change Food</button>
+	  <br>	
+	  <br>	
+  	  <img src="combo 2.jpg" width="104" height="90" alt="Combo1" class="pull-left">
+	   <br>
+      <br>				     
+	  <br>
+	  <br>								     
+	  <br>
+	 <hr>
+	  <h2>Combo 3</h2>
+      <h5><span class="glyphicon glyphicon-time"></span> Last change by RM, November 11, 2017.</h5>
+      <h5><span class="label label-success">Available</span></h5><br>
+	  <button type="button" class="btn btn-success">Set available</button>
+	  <button type="button" class="btn btn-success">Show Food</button>
+	  <br>
+	  <br>
+	   <button type="button" class="btn btn-danger btn-lg btn3d"><span class="glyphicon glyphicon-remove"></span> Delete Combo</button>
+	   <button type="button" class="btn btn-danger btn-lg btn3d"><span class="glyphicon glyphicon-remove"></span> Change Name</button>
+		<button type="button" class="btn btn-danger btn-lg btn3d"><span class="glyphicon glyphicon-remove"></span> Change Description</button>
+	   <button type="button" class="btn btn-danger btn-lg btn3d"><span class="glyphicon glyphicon-remove"></span> Change Price</button>
+	   <button type="button" class="btn btn-danger btn-lg btn3d"><span class="glyphicon glyphicon-remove"></span> Change Picture</button>
+	   <button type="button" class="btn btn-danger btn-lg btn3d"><span class="glyphicon glyphicon-remove"></span> Change Food</button>
+	  <br>	
+	  <br>	
+  	  <img src="combo 3.jpg" width="104" height="90" alt="Combo1" class="pull-left">
+	  <br>
+      <br>				     
+	  <br>
+	  <br>								     
+	  <br>
+	 <hr>
+
+      <br>
+      
+              <br>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="container-fluid">
+  <p>Database Admin</p>
+</footer>
+ 
+</body>
+</html>
