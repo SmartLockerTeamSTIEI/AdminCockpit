@@ -10,42 +10,13 @@
 	/*jQuery Code: Ajax Request on click on Combo should cause http Ajax Request to Server */
 	jQuery(document).ready(function(){		
 		type="text/javascript">
-            $(function(){				
-                $('#select_link').click(function(e){
-                    e.preventDefault();
-                    console.log('select_link clicked');
                     
-                     /*$.ajax({
-                        dataType: 'jsonp',
-                        data: "data=yeah",						
-                        jsonp: 'callback',
-                        url: 'http://localhost:3000/endpoint?callback=?',						
-                        success: function(data) {
-                            console.log('success');
-                            console.log(JSON.stringify(data));
-                        }
-                    });*/
-					var settings = {
-						asyn}
-					var data = {};
-					data.title = "title";
-					data.message = "message";
-					
-					$.ajax({
-						type: 'POST',
-						data: JSON.stringify(data),
-				        contentType: 'application/json',
-                        url: 'http://localhost:8080/combo',
-                        success: function(data) {
-                            console.log('success');
-                            console.log(JSON.stringify(data));
-                        }
-                    });
-					
-					
-					/* 
-					
-					Generated Michael
+					<button onclick="myFunction()">Click me</button>
+
+	<script>
+					function myFunction() {
+						document.getElementById("demo").innerHTML = "Example output";
+					}
 					
 					var settings = {
 					  "async": true,
@@ -58,16 +29,7 @@
 					$.ajax(settings).done(function (response) {
 					  console.log(response);
 					});
-					*/
-															
-					
-					/*$.ajax('http://localhost:3000/endpoint', {
-					        type: 'POST',
-					        data: JSON.stringify(data),
-					        contentType: 'application/json',
-					        success: function() { console.log('success');},
-					        error  : function() { console.log('error');}
-					});*/
+																
                 });				
             });
 	});
@@ -78,14 +40,14 @@
 	
 	/*using javascript (http://jsfiddle.net/8svjf80g/1/) to load JSON data into Bootstrap table */
 	
-	 //var $table = $('#table');
+	 var $table = $('#table');
 		var mydata = 
 	[
 	    {
         "combo": 0,
         "name": "test0",
         "price": "$0"
-		}
+    },
 	
 	
 	];
@@ -152,20 +114,7 @@
      	<li><a href="Info.html">Info</a></li>
 		
 		<li class="active"><a href="Combo.html" onclick="sndReq('curl -X GET "http://localhost:8080/combo');"> Combo</a></li>
-		
-		function loadJSON(file,callback) {   
-	  var xobj = new XMLHttpRequest();
-	  xobj.overrideMimeType('application/json');
-	  xobj.open('GET', file, true); 
-	  xobj.onreadystatechange = function () {
-    if (xobj.readyState == 4 && xobj.status == '200') {
-    // Required use of an anonymous callback as .open will NOT return a value but simply returns undefined in asynchronous mode
-      callback(xobj.responseText);
-     }
-  };
-  xobj.send(null);  
-}
-					
+						
 		<li><a href="Food.html">Food</a></li>
 		<li><a href="Ingredient.html">Ingredient</a><li>
 		<li><a href="Time Schedule.html">Time Schedule</a></li>
